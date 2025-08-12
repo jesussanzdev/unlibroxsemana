@@ -1,0 +1,36 @@
+<main>
+  <h1>Bienvenido a Libros Ligeros</h1>
+  <p>
+    Encuentra ofertas diarias en libros de nicho, descubre grandes joyas ocultas
+    por categoría y genera tu hábito de lectura a través de obras seleccionadas
+    que se hacen fáciles de leer y no son densas. ¿Quieres leer más y siempre
+    te quedas atascado en el mismo libro? Este es tu sitio.
+  </p>
+
+  <form (ngSubmit)="searchBooks()">
+    <input
+      type="text"
+      placeholder="Buscar libros..."
+      [(ngModel)]="keyword"
+      name="keyword"
+      required
+    />
+    <button type="submit">Buscar</button>
+  </form>
+
+  @if (results.length > 0) {
+    <section>
+      <h2>Resultados de búsqueda</h2>
+      <ul>
+        @for (book of results; track book) {
+          <li>
+            <a [href]="book.link" target="_blank" rel="noopener noreferrer">
+              {{ book.title }}
+            </a>
+            — {{ book.price }}
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</main>

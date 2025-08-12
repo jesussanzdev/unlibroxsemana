@@ -13,16 +13,36 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * Base endpoint for the Angular application.
  */
+app.get('/api/search', async (req, res) => {
+  try {
+    const keyword = req.query['q'] as unknown as string || 'libro corto'
+    const mockData = [
+      {
+        title: `Libro ejemplo para "${keyword}" #1`,
+        price: 12,
+        link: 'https://example.com/el-principito',
+      },
+      {
+        title: `Libro ejemplo para "${keyword}" #1`,
+        price: 15,
+        link: 'https://example.com/cien-anos-de-soledad',
+      },
+      {
+        title: `Libro ejemplo para "${keyword}" #1`,
+        price: 10,
+        link: 'https://example.com/1984',        
+      }
+    ];
+    res.json(mockData);
+  } catch (error) {
+    console.error('Error handling /api/search:', error);
+    res.status(500).send('Error interno del servidor.');
+  }
+});
+
+
 
 /**
  * Serve static files from /browser
