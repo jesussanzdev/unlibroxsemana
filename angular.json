@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "librosfugaces": {
+    "libroalasemana": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -14,6 +14,24 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "prerender": {
+          "builder": "@angular/build:application-prerender",
+          "options": {
+            "browserTarget": "libroalasemana:build",
+            "serverTarget": "libroalasemana:build:server",
+            "routes": [
+              "/",
+              "/categorias",
+              "/categorias/biografia",
+              "/categorias/ciencia-ficcion",
+              "/categorias/ensayo",
+              "/categorias/ficcion",
+              "/categorias/fantasia",
+              "/categorias/misterio",
+              "/categorias/romance"
+            ]
+          }
+        },
         "build": {
           "builder": "@angular/build:application",
           "options": {
@@ -63,10 +81,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "librosfugaces:build:production"
+              "buildTarget": "libroalasemana:build:production"
             },
             "development": {
-              "buildTarget": "librosfugaces:build:development"
+              "buildTarget": "libroalasemana:build:development"
             }
           },
           "defaultConfiguration": "development"

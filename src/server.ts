@@ -15,33 +15,25 @@ const angularApp = new AngularNodeAppEngine();
 /**
  * Base endpoint for the Angular application.
  */
-app.get('/api/search', async (req, res) => {
-  try {
-    const keyword = req.query['q'] as unknown as string || 'libro corto'
-    const mockData = [
-      {
-        title: `Libro ejemplo para "${keyword}" #1`,
-        price: 12,
-        link: 'https://example.com/el-principito',
-      },
-      {
-        title: `Libro ejemplo para "${keyword}" #1`,
-        price: 15,
-        link: 'https://example.com/cien-anos-de-soledad',
-      },
-      {
-        title: `Libro ejemplo para "${keyword}" #1`,
-        price: 10,
-        link: 'https://example.com/1984',        
-      }
-    ];
-    res.json(mockData);
-  } catch (error) {
-    console.error('Error handling /api/search:', error);
-    res.status(500).send('Error interno del servidor.');
-  }
-});
+app.get('/api/ofertas', (req, res) => {
+  const page = parseInt(req.query['page'] as string) || 1;
+  const pageSize = 10;
 
+  const totalPages = 400;
+
+  if (page > totalPages) {
+    return res.json({ items: [], hasMore: false });
+  }
+
+  const items = Array.from({ length: pageSize }).map((_, i) => ({
+    title: `Libro ${i + 1 + (page - 1) * pageSize}`,
+    price: `${10 + i} €`,
+    image: `https://via.placeholder.com/150?text=Libro+${i + 1 + (page - 1) * pageSize}`,
+    link: '#'
+  }));
+
+  return res.json({ items, hasMore: page < totalPages });
+});
 
 
 /**

@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@use '../src/styles/variables' as *;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: $color-background-body;
+  color: $color-text-dark;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh; // fuerza que el footer quede abajo
+}
+
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: $color-primary;
+  margin: 1.5rem 0 1rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}

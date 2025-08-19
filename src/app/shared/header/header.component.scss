@@ -1,7 +1,93 @@
-nav a {
-    margin-right: 1rem;
-    text-decoration: none;
-}
-nav a.active {
-    font-weight: bold;
+@use "../../../styles/variables" as *;
+
+header {
+  background-color: $color-primary;
+  padding: 1rem 2rem;
+  color: white;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+
+    .menu {
+      position: relative;
+
+      .menu-button {
+        background-color: $color-secondary;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:hover {
+          background-color: lighten($color-secondary, 10%);
+        }
+      }
+
+      ul.dropdown {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $color-primary;
+        border: 1px solid $color-secondary;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        min-width: 180px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+
+        li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          color: white;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $color-secondary;
+            color: $color-primary;
+          }
+        }
+      }
+
+      ul.dropdown.show {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .menu {
+        width: 100%;
+
+        ul.dropdown {
+          position: relative;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

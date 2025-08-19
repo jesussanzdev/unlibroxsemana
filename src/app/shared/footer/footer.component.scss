@@ -1,0 +1,30 @@
+@use "../../../styles/variables" as *;
+
+footer {
+  background-color: $color-background-footer;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: $color-text-dark;
+  border-top: 1px solid $color-border;
+
+  p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: $color-text-muted;
+  }
+
+  nav {
+    margin-top: 0.5rem;
+
+    a {
+      color: $color-primary;
+      text-decoration: none;
+      margin: 0 0.5rem;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+}
