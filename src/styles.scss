@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  min-height: 100vh; // fuerza que el footer quede abajo
+  min-height: 100vh;
 }
 
 main {
@@ -39,4 +39,15 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+}
+
+a {
+  color: $color-primary;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-secondary;
+  }
 }

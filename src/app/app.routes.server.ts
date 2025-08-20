@@ -8,7 +8,6 @@ export const serverRoutes: ServerRoute[] = [
       { slug: 'biografia' },
       { slug: 'ciencia-ficcion' },
       { slug: 'ensayo' },
-      { slug: 'ficcion' },
       { slug: 'fantasia' },
       { slug: 'misterio' },
       { slug: 'romance' }

@@ -1,0 +1,5 @@
+[
+  { "asin": "B001", "title": "La chica del tren", "price": "12.99 €", "image": "https://via.placeholder.com/150?text=Habitos", "link": "https://amazon.es/dp/B001", "pages": 371, "description": "Guía práctica y adictiva para cambiar rutinas sin morir en el intento." },
+  { "asin": "B002", "title": "Asesinato en el Orient Express", "price": "14.50 €", "image": "https://via.placeholder.com/150?text=Sapiens", "link": "https://amazon.es/dp/B002", "pages": 498, "description": "Historia de la humanidad contada con ritmo: aprenderás y te enganchará." },
+  { "asin": "B003", "title": "10 negritos (Y no quedo ninguno)", "price": "9.99 €", "image": "https://via.placeholder.com/150?text=Alquimista", "link": "https://amazon.es/dp/B003", "pages": 208, "description": "Aventura espiritual ligera que te inspira y se lee de un tirón." }
+]

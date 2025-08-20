@@ -1,6 +1,11 @@
 export interface Book {
-    title: string;
-    price: string;
-    image: string;
-    link: string;
+  title: string;
+  author?: string;
+  pages?: number;
+  price?: string;
+  description?: string;
+  image?: string;
+  link: string;
+  asin: string;
 }
+

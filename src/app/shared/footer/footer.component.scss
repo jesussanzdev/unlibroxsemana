@@ -18,13 +18,7 @@ footer {
     margin-top: 0.5rem;
 
     a {
-      color: $color-primary;
-      text-decoration: none;
       margin: 0 0.5rem;
-
-      &:hover {
-        color: $color-secondary;
-      }
     }
   }
 }

@@ -1,4 +1,22 @@
 <main>
     <h1>Categoría: {{ slug | titlecase }}</h1>
-    <p>Estás explorando ofertas de libros en la categoría <strong>{{ slug }}</strong></p>
+    <p>Estás explorando recomendaciones de libros cortos y adictivos en la categoría <strong>{{ slug }}</strong></p>
+
+
+    <div class="grid-container">
+
+    @for (book of books; track book.asin) {
+    <div class="book-card">
+        <img 
+          [src]="book.image" 
+          [alt]="book.title" 
+          (error)="onImageError($event)"
+        />
+        <h2>{{ book.title }}</h2>
+        <p>{{ book.description }}</p>
+        <p>📄 {{ book.pages }} páginas | {{ book.price }} </p>
+        <a [href]="book.link" target="_blank" rel="noopener noreferrer">Comprar</a>
+    </div>
+    }
+  </div>
 </main>

@@ -10,5 +10,5 @@ import { FooterComponent } from './shared/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class App {
-  protected readonly title = signal('Un libro a la semana');
+  protected readonly title = signal('Un libro por semana');
 }

@@ -1,0 +1,4 @@
+[
+  { "asin": "B001", "title": "El Hobbit", "price": "12.99 €", "image": "https://via.placeholder.com/150?text=Habitos", "link": "https://amazon.es/dp/B001", "pages": 371, "description": "Guía práctica y adictiva para cambiar rutinas sin morir en el intento." },
+  { "asin": "B002", "title": "Coraline", "price": "14.50 €", "image": "https://via.placeholder.com/150?text=Sapiens", "link": "https://amazon.es/dp/B002", "pages": 498, "description": "Historia de la humanidad contada con ritmo: aprenderás y te enganchará." }
+]

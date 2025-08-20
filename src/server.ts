@@ -5,37 +5,37 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { join } from 'node:path';
+import path, { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+import fs from 'fs';
+
+const booksPath = path.join(process.cwd(), 'data/recomendations.json');
+const books = JSON.parse(fs.readFileSync(booksPath, 'utf-8'));
+
+// Seleccionar libros distintos cada semana
+function getWeeklyBooks(count = 10) {
+  const today = new Date();
+  const firstJan = new Date(today.getFullYear(), 0, 1);
+  const days = Math.floor((today.getTime() - firstJan.getTime()) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil((days + firstJan.getDay() + 1) / 7);
+
+  const startIndex = weekNumber % books.length;
+  const rotated = [...books.slice(startIndex), ...books.slice(0, startIndex)];
+  return rotated.slice(0, count);
+}
 
 /**
  * Base endpoint for the Angular application.
  */
 app.get('/api/ofertas', (req, res) => {
-  const page = parseInt(req.query['page'] as string) || 1;
-  const pageSize = 10;
-
-  const totalPages = 400;
-
-  if (page > totalPages) {
-    return res.json({ items: [], hasMore: false });
-  }
-
-  const items = Array.from({ length: pageSize }).map((_, i) => ({
-    title: `Libro ${i + 1 + (page - 1) * pageSize}`,
-    price: `${10 + i} €`,
-    image: `https://via.placeholder.com/150?text=Libro+${i + 1 + (page - 1) * pageSize}`,
-    link: '#'
-  }));
-
-  return res.json({ items, hasMore: page < totalPages });
+  const pageSize = 12;
+  const items = getWeeklyBooks(pageSize);
+  res.json({ items, hasMore: false });
 });
-
-
 /**
  * Serve static files from /browser
  */

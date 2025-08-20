@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   template: `
   <footer>
-  <p>Un libro a la semana, un hábito para toda la vida.</p>
+  <p>Un libro por semana, un hábito para toda la vida.</p>
   <nav>
     <a routerLink="/sobre-nosotros">Sobre nosotros</a>
   </nav>

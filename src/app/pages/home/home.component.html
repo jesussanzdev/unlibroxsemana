@@ -1,33 +1,38 @@
-<main class="p-6">
-  <h1 class="text-2xl font-bold mb-4">Un libro a la semana | Lecturas rápidas y cautivadoras</h1>
+<main class="container">
+  <h1>Un libro por semana | Lecturas ágiles y adictivas</h1>
 
-  <p class="mb-4">
-    Bienvenido a <strong>Un libro a la semana</strong>, tu lugar para descubrir ofertas exclusivas de libros seleccionados cuidadosamente. Cada semana encontrarás títulos nuevos, ideales para quienes aman leer sin perder tiempo, desde ficción hasta ensayos y fantasía.
+  <p>
+    Bienvenido a <strong>Un libro por semana</strong>, tu lugar para descubrir recomendaciones exclusivas de libros seleccionados cuidadosamente.
+    Cada semana encontrarás títulos nuevos, ideales para quienes aman leer sin perder tiempo, desde ficción hasta ensayos y fantasía.
   </p>
 
-  <p class="mb-6">
-    Nuestra misión es fomentar el hábito de lectura ofreciendo recomendaciones que te enganchen, entretengan y eduquen. Encuentra aquí libros que podrás disfrutar semana a semana, aprovechando las mejores ofertas y cuidando tu presupuesto.
+  <p>
+    Nuestra misión es <strong>fomentar el hábito de lectura</strong> ofreciendo recomendaciones que te <strong>enganchen, entretengan y eduquen.</strong>
+    Encuentra aquí libros que podrás disfrutar semana a semana, sin la presión de lecturas extensas.
   </p>
 
-  <h2>Ofertas de la semana</h2>
-  <p class="mb-4">
-    Cada semana seleccionamos cuidadosamente las mejores ofertas en libros para que no te pierdas títulos fascinantes a precios increíbles. Explora nuestra colección actual y encuentra tu próxima lectura favorita sin salir de casa.
-  </p>
+  <p>Nos encanta recomendar libros que atraparán tu atención, siempre buscando aquellos que no superen las <strong>400-450 páginas</strong> y con un estilo de lectura dinámico, aunque variado. Desde <strong>clásicos</strong> que todos conocen hasta <strong>pequeñas joyas de nicho</strong> que queremos compartir contigo, nuestra selección se basa en ofertas de Amazon para que descubrir buenas lecturas sea fácil y accesible.</p>
 
+  <h2>Recomendaciones de la semana</h2>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    @for (book of books(); track book){
-      <img [src]="book.image" [alt]="book.title" class="mb-2">
-      <h2 class="font-semibold text-sm">{{ book.title }}</h2>
-      <p class="text-red-600">{{ book.price }}</p>
-      <a [href]="book.link" target="_blank" class="text-blue-600 underline text-sm">Ver en Amazon</a>
+  <div class="book-grid">
+    @for (book of bookList; track book) {
+      <div class="book-card">
+        <img 
+          [src]="book.image" 
+          [alt]="book.title" 
+          (error)="onImageError($event)"
+        />
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.description }}</p>
+        @if (book.author) {
+          <p class="author">{{ book.author }}</p>
+        }
+        @if (book.pages) {
+          <p class="pages">{{ book.pages }} páginas</p>
+        }
+        <a [href]="book.link" target="_blank" rel="noopener noreferrer">Comprar</a>
+      </div>
     }
   </div>
-
-  <div #infiniteScrollAnchor class="h-10"></div>
-  @if(loading() && books().length === 0) {
-    <p class="mt-4">Cargando más libros.</p>
-  } @else if(!loading() && books().length === 0) {
-    <p class="mt-4">Ha ocurrido un error inesperado, reinténtalo en un rato...</p>
-  }
 </main>
