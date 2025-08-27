@@ -1,6 +1,10 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
+    {
+    path: 'categorias',
+    renderMode: RenderMode.Prerender,
+  },
   {
     path: 'categorias/:slug',
     renderMode: RenderMode.Prerender,

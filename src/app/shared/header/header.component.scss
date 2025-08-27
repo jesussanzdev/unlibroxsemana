@@ -6,6 +6,21 @@ header {
   padding: 1rem 2rem;
   color: white;
 
+  .logo {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #111; /* color neutro y elegante */
+    text-decoration: none;
+    letter-spacing: 0.05em; /* un toque de espacio entre letras */
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.25); /* efecto leve de crecimiento */
+  }
+
+
   .navbar {
     display: flex;
     align-items: center;

@@ -1,6 +1,7 @@
 <main>
     <h1>Categoría: {{ slug | titlecase }}</h1>
-    <p>Estás explorando recomendaciones de libros cortos y adictivos en la categoría <strong>{{ slug }}</strong></p>
+    <p>¡Ten cuidado!</p> 
+    <p>Estás explorando recomendaciones de <strong>libros adictivos</strong> en la categoría <strong>{{ slug }}</strong></p>
 
 
     <div class="grid-container">
@@ -15,7 +16,7 @@
         <h2>{{ book.title }}</h2>
         <p>{{ book.description }}</p>
         <p>📄 {{ book.pages }} páginas | {{ book.price }} </p>
-        <a [href]="book.link" target="_blank" rel="noopener noreferrer">Comprar</a>
+        <a [href]="book.link" target="_blank" rel="noopener noreferrer">Ver más</a>
     </div>
     }
   </div>

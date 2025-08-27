@@ -1,0 +1,22 @@
+<main>
+    <h1>Categorías de Un Libro por Semana</h1>
+    <p>Estás explorando todas las categorías y recomendaciones de nuestra web. Aquí las tienes ordenadas alfabéticamente, para que encuentres fácilmente el tipo de lectura que más te inspira. Cada categoría reúne títulos destacados para que nunca te falte un buen libro.</p>
+
+    <p>En nuestra plataforma nos enfocamos en fomentar hábitos de lectura, <strong>proponiendo libros cortos, autoconclusivos y altamente adictivos.</strong> Queremos que cada título que descubras sea una experiencia completa, que puedas disfrutar <strong>sin sentirte abrumado y que deje una impresión duradera.</strong></p>
+
+    <p>Aunque los libros sean breves, nuestra selección es muy variada: encontrarás desde biografías inspiradoras hasta aventuras fantásticas, misterios que atrapan y reflexiones profundas en ensayos. La idea es ofrecer lecturas que <strong>se adapten</strong> a cualquier momento, siempre con calidad y diversión garantizadas.</p>
+
+    <div class="categories">
+      <ul>
+        @for (category of categories; track category) {
+        <li>
+          <h3>
+              <a [routerLink]="category.url">{{ category.name }}</a>
+          </h3>
+          <p>{{category.description}}</p>
+        </li>
+        }
+      </ul>
+    </div>
+
+</main>

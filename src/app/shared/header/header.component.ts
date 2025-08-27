@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   template: `
 <header>
   <nav class="navbar" aria-label="Main navigation">
-    <a routerLink="/" class="logo">Inicio</a>
+    <a routerLink="/" class="logo" class="logo">1LXS</a>
 
     <div class="menu">
       <button class="menu-button" aria-controls="categories-list" (click)="toggleCategories()">

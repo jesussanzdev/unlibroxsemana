@@ -32,7 +32,7 @@ function getWeeklyBooks(count = 10) {
  * Base endpoint for the Angular application.
  */
 app.get('/api/ofertas', (req, res) => {
-  const pageSize = 12;
+  const pageSize = 8;
   const items = getWeeklyBooks(pageSize);
   res.json({ items, hasMore: false });
 });
