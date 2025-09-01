@@ -90,19 +90,19 @@ header {
     }
   }
 
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-
-      .menu {
-        width: 100%;
-
-        ul.dropdown {
-          position: relative;
-          width: 100%;
-        }
-      }
-    }
+@media (max-width: 768px) {
+  .menu ul.dropdown {
+    position: absolute;    // se superpone, no aumenta el header
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;         // cerrado por defecto
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
+
+  .menu ul.dropdown.show {
+    max-height: 500px;
+  }
+}
 }

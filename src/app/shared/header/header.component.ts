@@ -8,12 +8,15 @@ import { RouterModule } from '@angular/router';
 <header>
   <nav class="navbar" aria-label="Main navigation">
     <a routerLink="/" class="logo" class="logo">1LXS</a>
-
     <div class="menu">
-      <button class="menu-button" aria-controls="categories-list" (click)="toggleCategories()">
-        Categorías ▾
-      </button>
+    <button class="menu-button"
+            [attr.aria-expanded]="categoriesOpen"
+            aria-controls="categories-list"
+            (click)="toggleCategories()">
+      Categorías ▾
+    </button>
 
+      <!-- Siempre renderizado para SEO -->
       <ul id="categories-list" class="dropdown" [class.show]="categoriesOpen">
         <li><a routerLink="/categorias/biografia">Biografía</a></li>
         <li><a routerLink="/categorias/ciencia-ficcion">Ciencia Ficción</a></li>
