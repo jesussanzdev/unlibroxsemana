@@ -1,0 +1,33 @@
+<div class="packs">
+  @for (pack of packs; track pack) {
+    <div class="packs__pack">
+      <h2>{{ pack.title }}</h2>
+      <p>{{ pack.description }}</p>
+      <button class="packs__pack__open-btn" (click)="openPack(pack)">Ver libros</button>
+    </div>
+  }
+</div>
+
+<!-- Modal overlay -->
+@if (selectedPack) {
+  <div class="modal-backdrop" (click)="closePack()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closePack()">✕</button>
+
+      <h2>{{ selectedPack.title }}</h2>
+      <p>{{ selectedPack.description }}</p>
+
+      <div class="roadmap">
+        @for (book of selectedPack.books; track book) {
+          <div class="book-card">
+            <img [src]="book.link" (error)="onImageError($event)" alt="{{ book.title }}">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+            <small>{{ book.pages }} páginas</small>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+
