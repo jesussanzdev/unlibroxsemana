@@ -23,7 +23,7 @@ import { RouterModule } from '@angular/router';
         <li><a routerLink="/categorias/ensayo">Ensayo</a></li>
         <li><a routerLink="/categorias/fantasia">Fantasía</a></li>
         <li><a routerLink="/categorias/misterio">Misterio/Suspense</a></li>
-        <li><a routerLink="/categorias/romance">Romance</a></li>
+        <li><a routerLink="/categorias/romance">Romance/Drama</a></li>
       </ul>
     </div>
   </nav>

@@ -17,8 +17,8 @@ export class PacksComponent {
       description: 'Explora mundos mágicos llenos de aventuras.',
       books: [
         { asin: '1', title: 'El Hobbit', author: 'J. R. R. Tolkien', pages: 310, link: ''},
-        { asin: '2', title: 'Harry Potter y la piedra filosofal', author: 'J. K. Rowling', pages: 340, link: ''},
-        { asin: '3', title: 'Percy Jackson y el ladrón del rayo', author: 'Rick Riordan', pages: 375, link: ''}
+        { asin: '2', title: 'Coraline', author: 'Neil Gaiman', pages: 340, link: ''},
+        { asin: '3', title: 'La princesa prometida', author: 'William Goldman', pages: 375, link: ''}
       ]
     },
     {
@@ -29,16 +29,6 @@ export class PacksComponent {
         { asin: '4', title: 'Inteligencia emocional', author: 'Daniel Goleman', pages: 300, link: '' },
         { asin: '5', title: 'Los 7 hábitos de la gente altamente efectiva', author: 'Stephen Covey', pages: 380, link: ''},
         { asin: '6', title: 'Atomic Habits', author: 'James Clear', pages: 350, link: ''}
-      ]
-    },
-    {
-      id: 'filosofia',
-      title: 'Filosofía Ligera',
-      description: 'Reflexiones profundas en un lenguaje sencillo.',
-      books: [
-        { asin: '7', title: 'El mundo de Sofía', author: 'Jostein Gaarder', pages: 400, link: ''},
-        { asin: '8', title: 'Meditaciones', author: 'Marco Aurelio', pages: 180, link: ''},
-        { asin: '9', title: 'El hombre en busca de sentido', author: 'Viktor Frankl', pages: 200, link: ''}
       ]
     },
     {

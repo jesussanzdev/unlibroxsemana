@@ -23,23 +23,26 @@ export class CategoryComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   private paramSub!: Subscription;
 
+
   ngOnInit() {
-    this.paramSub = this.route.paramMap.subscribe((params: ParamMap) => {
-      this.slug = params.get('slug') || '';
+    this.paramSub = this.route.paramMap
+      .pipe(
+        switchMap((params: ParamMap) => {
+          this.slug = params.get('slug') || '';
 
-      this.title.setTitle(`Libros cortos y adictivos en ${this.slug}`);
-      this.meta.updateTag({
-        name: 'description',
-        content: `Descubre libros en la categoría ${this.slug} y fomenta tu hábito de lectura.`,
+          this.title.setTitle(`Libros cortos y adictivos en ${this.slug}`);
+          this.meta.updateTag({
+            name: 'description',
+            content: `Descubre libros en la categoría ${this.slug} y fomenta tu hábito de lectura.`,
+          });
+
+          return this.http.get<Book[]>(`/assets/data/${this.slug}.json`);
+        })
+      )
+      .subscribe((books) => {
+        this.books = [...books];
+        this.cdr.detectChanges();
       });
-
-      this.http
-        .get<Book[]>(`/assets/data/${this.slug}.json`)
-        .subscribe((books) => {
-          this.books = books || [];
-          this.cdr.detectChanges();
-        });
-    });
   }
 
   onImageError(event: Event) {

@@ -19,7 +19,7 @@
 
       <div class="roadmap">
         @for (book of selectedPack.books; track book) {
-          <div class="book-card">
+          <div class="roadmap__book-card">
             <img [src]="book.link" (error)="onImageError($event)" alt="{{ book.title }}">
             <h3>{{ book.title }}</h3>
             <p>{{ book.author }}</p>
@@ -30,4 +30,3 @@
     </div>
   </div>
 }
-
