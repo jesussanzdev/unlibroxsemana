@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "libroalasemana": {
+    "unlibroxsemana": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,8 +17,8 @@
         "prerender": {
           "builder": "@angular/build:application-prerender",
           "options": {
-            "browserTarget": "libroalasemana:build",
-            "serverTarget": "libroalasemana:build:server",
+            "browserTarget": "unlibroxsemana:build",
+            "serverTarget": "unlibroxsemana:build:server",
             "routes": [
               "/",
               "/categorias",
@@ -85,10 +85,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "libroalasemana:build:production"
+              "buildTarget": "unlibroxsemana:build:production"
             },
             "development": {
-              "buildTarget": "libroalasemana:build:development"
+              "buildTarget": "unlibroxsemana:build:development"
             }
           },
           "defaultConfiguration": "development"

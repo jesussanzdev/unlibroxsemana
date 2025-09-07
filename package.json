@@ -1,13 +1,13 @@
 {
-  "name": "libroalasemana",
-  "version": "0.0.0",
+  "name": "unlibroxsemana",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:libroalasemana": "node dist/libroalasemana/server/server.mjs"
+    "serve:ssr:unlibroxsemana": "node dist/unlibroxsemana/server/server.mjs"
   },
   "prettier": {
     "overrides": [
@@ -29,9 +29,11 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.5",
+    "builder": "^5.0.0",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
     "@angular/build": "^20.1.5",

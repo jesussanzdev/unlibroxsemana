@@ -47,10 +47,30 @@ categories: Category[] = [
 ];
 
   ngOnInit() {
-    this.title.setTitle(`Libros cortos y adictivos en sección de Categorías`);
-    this.meta.updateTag({
-      name: 'description',
-      content: `Descubre libros en la sección de categorías de Un Libro por semana y fomenta tu hábito de lectura.`
-    });
+    this.setSeoTags();
+  }
+
+  private setSeoTags() {
+    const titleText = `Libros cortos y adictivos en sección de Categorías - Un libro por semana`;
+    const descriptionText = `Explora todas las categorías de libros en Un Libro por Semana. Descubre recomendaciones cuidadosamente seleccionadas para fomentar tu hábito de lectura.`;
+    
+    // Title y Meta
+    this.title.setTitle(titleText);
+    this.meta.updateTag({ name: 'description', content: descriptionText });
+    this.meta.updateTag({ name: 'keywords', content: 'libros, categorías, lectura, recomendaciones, packs' });
+
+    // Open Graph
+    this.meta.updateTag({ property: 'og:title', content: titleText });
+    this.meta.updateTag({ property: 'og:description', content: descriptionText });
+    this.meta.updateTag({ property: 'og:url', content: 'https://unlibroxsemana.com/categorias' });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+
+    // Twitter Card
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: titleText });
+    this.meta.updateTag({ name: 'twitter:description', content: descriptionText });
+
+    // Canonical
+    this.meta.updateTag({ rel: 'canonical', href: 'https://unlibroxsemana.com/categorias' } as any);
   }
 }
