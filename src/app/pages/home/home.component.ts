@@ -7,6 +7,7 @@ import { filter, map, Observable, startWith, switchMap } from 'rxjs';
 import { PacksComponent } from '../../shared/components/packs/packs.component';
 import { Router, NavigationEnd } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -28,15 +29,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // Observable reactivo que escucha cambios de navegación y carga libros
-    this.books$ = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-      startWith(true),
-      switchMap(() =>
-        this.http.get<{ items: Book[] }>('/api/ofertas').pipe(
-          map(res => res.items)
+      this.books$ = this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        startWith(true),
+        switchMap(() =>
+          this.http.get<{ items: Book[] }>(`${environment.apiUrl}/ofertas`).pipe(
+            map(res => res.items)
+          )
         )
-      )
-    );
+      );
   }
 
   onImageError(event: Event) {
