@@ -90,19 +90,27 @@ header {
     }
   }
 
-@media (max-width: 768px) {
-  .menu ul.dropdown {
-    position: absolute;    // se superpone, no aumenta el header
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 0;         // cerrado por defecto
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
+  @media (max-width: 768px) {
+    .menu ul.dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-20%);
+      width: 90%;
+      max-width: 320px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      text-align: center;
+    }
 
-  .menu ul.dropdown.show {
-    max-height: 500px;
+    .menu ul.dropdown.show {
+      max-height: 500px;
+    }
+
+    .menu ul.dropdown li a {
+      display: block;
+      padding: 0.75rem 1rem;
+    }
   }
-}
 }

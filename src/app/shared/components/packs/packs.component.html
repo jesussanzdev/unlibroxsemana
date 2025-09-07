@@ -1,8 +1,9 @@
 <div class="packs">
   @for (pack of packs; track pack) {
     <div class="packs__pack">
+      <img [src]="pack.image" alt="{{ pack.title }}" class="packs__pack__img">
       <h2>{{ pack.title }}</h2>
-      <p>{{ pack.description }}</p>
+      <p>{{ pack.shortDescription }}</p>
       <button class="packs__pack__open-btn" (click)="openPack(pack)">Ver libros</button>
     </div>
   }
@@ -20,10 +21,13 @@
       <div class="roadmap">
         @for (book of selectedPack.books; track book) {
           <div class="roadmap__book-card">
-            <img [src]="book.link" (error)="onImageError($event)" alt="{{ book.title }}">
+            <img [src]="book.image" (error)="onImageError($event)" alt="{{ book.title }}">
             <h3>{{ book.title }}</h3>
             <p>{{ book.author }}</p>
-            <small>{{ book.pages }} páginas</small>
+            <small>{{ book.pages }} páginas</small> <br/>
+            <div>
+              <a [href]="book.link" target="_blank" rel="noopener noreferrer">Comprar</a>
+            </div>
           </div>
         }
       </div>

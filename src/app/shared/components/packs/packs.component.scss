@@ -34,6 +34,21 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.12);
       }
 
+      &__img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
+
       &__open-btn {
           display: inline-block;
           padding: 0.75rem 1.5rem;
@@ -119,6 +134,11 @@
       small {
         font-size: 0.8rem;
         color: #6b7280;
+      }
+
+      a {
+        margin-top: auto;
+        font-size: 12px;
       }
     }
 }
