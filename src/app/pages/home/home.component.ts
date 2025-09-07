@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { Book } from '../../shared/interfaces/book.interface';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
-import { filter, switchMap, take } from 'rxjs';
+import { filter } from 'rxjs';
 import { PacksComponent } from '../../shared/components/packs/packs.component';
-import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,23 +14,23 @@ import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  http = inject(HttpClient);
-  loading = signal(false);
+  private http = inject(HttpClient);
+  private cdr = inject(ChangeDetectorRef);
+  private router = inject(Router);
+  private title = inject(Title);
+  private meta = inject(Meta);
+
   bookList: Book[] = [];
 
-  private title = inject(Title);
-  private router = inject(Router);
-  private meta = inject(Meta);
-  private cdr = inject(ChangeDetectorRef);
-
-  platformId = inject(PLATFORM_ID);
-
-  constructor(){
-      this.loadBooks();
-      this.setMetaTags();
+  constructor() {
+    this.setMetaTags();
   }
-  
+
   ngOnInit() {
+    // Cargar libros inicialmente
+    this.loadBooks();
+
+    // Recargar libros si se navega dentro de la app
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -46,6 +46,9 @@ export class HomeComponent implements OnInit {
           this.bookList = res.items;
           this.cdr.detectChanges();
         },
+        error: err => {
+          console.error('Error cargando libros:', err);
+        }
       });
   }
 
