@@ -8,7 +8,6 @@ import express from 'express';
 import path, { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
-const xmlbuilder = require('xmlbuilder');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
