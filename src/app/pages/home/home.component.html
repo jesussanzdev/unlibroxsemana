@@ -21,24 +21,38 @@
   <div class="underline"></div>
 
   <div class="book-grid">
-    @for (book of bookList; track book) {
-      <div class="book-card">
-        <img 
-          [src]="book.image" 
-          [alt]="book.title" 
-          (error)="onImageError($event)"
-        />
-        <h3>{{ book.title }}</h3>
-        <p>{{ book.description }}</p>
-        @if (book.author) {
-          <p class="author">{{ book.author }}</p>
-        }
-        @if (book.pages) {
-          <p class="pages">{{ book.pages }} páginas</p>
-        }
-        <a [href]="book.link" target="_blank" rel="noopener noreferrer">Ver más</a>
-      </div>
+
+  @if (books$ | async; as books) {
+    @if (books.length > 0) {
+      @for (book of books; track book.asin) {
+        <div class="book-card">
+          <img
+            [src]="book.image"
+            [alt]="book.title"
+            (error)="onImageError($event)"
+          />
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.description }}</p>
+
+          @if (book.author) {
+            <p class="author">{{ book.author }}</p>
+          }
+
+          @if (book.pages) {
+            <p class="pages">{{ book.pages }} páginas</p>
+          }
+
+          <a [href]="book.link" target="_blank" rel="noopener noreferrer">
+            Ver más
+          </a>
+        </div>
+      }
+    } @else {
+      <p>No hay recomendaciones disponibles ahora.</p>
     }
+  } @else {
+    <p>Cargando libros…</p>
+  }
   </div>
 
   <h2 class="animated-title">Packs de lectura</h2>
