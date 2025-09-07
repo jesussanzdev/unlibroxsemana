@@ -3,9 +3,9 @@ import { Book } from '../../shared/interfaces/book.interface';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
-import { take } from 'rxjs';
+import { filter, switchMap, take } from 'rxjs';
 import { PacksComponent } from '../../shared/components/packs/packs.component';
-import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,34 +19,33 @@ export class HomeComponent implements OnInit {
   bookList: Book[] = [];
 
   private title = inject(Title);
+  private router = inject(Router);
   private meta = inject(Meta);
-  private loaded = false;
   private cdr = inject(ChangeDetectorRef);
 
   platformId = inject(PLATFORM_ID);
-  
-  ngOnInit() {
-    if (!this.loaded) {
-      this.loaded = true;
+
+  constructor(){
       this.loadBooks();
       this.setMetaTags();
-    }
+  }
+  
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.loadBooks();
+        this.setMetaTags();
+      });
   }
 
   private loadBooks() {
-    this.loading.set(true);
     this.http.get<{ items: Book[] }>('/api/ofertas')
-      .pipe(take(1))
       .subscribe({
         next: res => {
           this.bookList = res.items;
-          this.loading.set(false);
           this.cdr.detectChanges();
-          if (!isPlatformBrowser(this.platformId)) {
-            this.addJsonLdBooks(res.items);
-          }
         },
-        error: () => this.loading.set(false)
       });
   }
 
@@ -76,23 +75,5 @@ export class HomeComponent implements OnInit {
 
     // Canonical
     this.meta.updateTag({ rel: 'canonical', href: 'https://unlibroxsemana.com/' } as any);
-  }
-
-
-  private addJsonLdBooks(books: Book[]) {
-    const bookData = books.map(b => ({
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "name": b.title,
-      "author": b.author,
-      "url": `https://unlibroxsemana.com/libro/${b.title.replace(/\s+/g,'-').toLowerCase()}`,
-      "image": b.image,
-      "numberOfPages": b.pages
-    }));
-
-    const jsonLd = document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.text = JSON.stringify(bookData);
-    document.head.appendChild(jsonLd);
   }
 }

@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute, ParamMap, Data } from '@angular/router';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { Subscription, switchMap } from 'rxjs';
-import { isPlatformBrowser, TitleCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../../shared/interfaces/book.interface';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-category',
@@ -18,12 +18,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
   private meta = inject(Meta);
   private http = inject(HttpClient);
   private cdr = inject(ChangeDetectorRef);
-  private platformId = inject(PLATFORM_ID);
 
   slug: string = '';
   books: Book[] = [];
   private paramSub!: Subscription;
-
 
   ngOnInit() {
     this.paramSub = this.route.paramMap
@@ -36,12 +34,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
       .subscribe((books) => {
         this.books = [...books];
         this.cdr.detectChanges();
-
         this.setSeoTags();
-
-        if (!isPlatformBrowser(this.platformId)) {
-          this.addJsonLdBooks(books);
-        }
       });
   }
 
@@ -76,23 +69,5 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
     // Canonical
     this.meta.updateTag({ rel: 'canonical', href: `https://unlibroxsemana.com/categorias/${this.slug}` } as any);
-  }
-
-  /** JSON-LD dinámico para libros */
-  private addJsonLdBooks(books: Book[]) {
-    const bookData = books.map(b => ({
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "name": b.title,
-      "author": b.author,
-      "url": `https://unlibroxsemana.com/categorias/${b.title.replace(/\s+/g,'-').toLowerCase()}`,
-      "image": b.image,
-      "numberOfPages": b.pages
-    }));
-
-    const jsonLd = document.createElement('script');
-    jsonLd.type = 'application/ld+json';
-    jsonLd.text = JSON.stringify(bookData);
-    document.head.appendChild(jsonLd);
   }
 }
