@@ -1,6 +1,15 @@
 {
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/assets/sitemap.xml" },
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/sitemap.xml", "destination": "/assets/sitemap.xml" }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.unlibroxsemana.com" }
+      ],
+      "destination": "https://unlibroxsemana.com/$1",
+      "permanent": true
+    }
   ]
 }
