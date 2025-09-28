@@ -53,13 +53,13 @@ export class HomeComponent implements OnInit {
 
     this.meta.updateTag({ property: 'og:title', content: titleText });
     this.meta.updateTag({ property: 'og:description', content: descriptionText });
-    this.meta.updateTag({ property: 'og:url', content: 'https://unlibroxsemana.com/' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://www.unlibroxsemana.com/' });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
 
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: titleText });
     this.meta.updateTag({ name: 'twitter:description', content: descriptionText });
 
-    this.meta.updateTag({ rel: 'canonical', href: 'https://unlibroxsemana.com/' } as any);
+    this.meta.updateTag({ rel: 'canonical', href: 'https://www.unlibroxsemana.com/' } as any);
   }
 }

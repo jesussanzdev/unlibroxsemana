@@ -18,7 +18,7 @@ root.att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
 routes.forEach(route => {
   const url = root.ele('url');
-  url.ele('loc', `https://unlibroxsemana.com${route}`);
+  url.ele('loc', `https://www.unlibroxsemana.com${route}`);
   url.ele('lastmod', new Date().toISOString());
   url.ele('changefreq', 'weekly');
   url.ele('priority', route === '/' ? '1.0' : '0.8');

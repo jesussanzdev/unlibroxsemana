@@ -6,9 +6,9 @@
     {
       "source": "/(.*)",
       "has": [
-        { "type": "host", "value": "www.unlibroxsemana.com" }
+        { "type": "host", "value": "unlibroxsemana.com" }
       ],
-      "destination": "https://unlibroxsemana.com/$1",
+      "destination": "https://www.unlibroxsemana.com/$1",
       "permanent": true
     }
   ]

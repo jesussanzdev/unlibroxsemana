@@ -62,7 +62,7 @@ categories: Category[] = [
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: titleText });
     this.meta.updateTag({ property: 'og:description', content: descriptionText });
-    this.meta.updateTag({ property: 'og:url', content: 'https://unlibroxsemana.com/categorias' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://www.unlibroxsemana.com/categorias' });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
 
     // Twitter Card
@@ -71,6 +71,6 @@ categories: Category[] = [
     this.meta.updateTag({ name: 'twitter:description', content: descriptionText });
 
     // Canonical
-    this.meta.updateTag({ rel: 'canonical', href: 'https://unlibroxsemana.com/categorias' } as any);
+    this.meta.updateTag({ rel: 'canonical', href: 'https://www.unlibroxsemana.com/categorias' } as any);
   }
 }
