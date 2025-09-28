@@ -18,12 +18,12 @@ export class InformationComponent {
   /** Función separada para SEO */
   private setSeoTags() {
     const titleText = `Sobre nosotros y políticas - Un libro por semana`;
-    const descriptionText = `Conoce nuestra filosofía, políticas de cookies y afiliados, y aprende a sacar el máximo provecho de nuestras recomendaciones de libros cortos y adictivos.`;
+    const descriptionText = `Conoce nuestra filosofía, políticas y afiliados, y aprende a sacar el máximo provecho de nuestras recomendaciones de libros cortos y adictivos.`;
 
     // Title y Meta
     this.title.setTitle(titleText);
     this.meta.updateTag({ name: 'description', content: descriptionText });
-    this.meta.updateTag({ name: 'keywords', content: 'sobre nosotros, política, cookies, afiliados, libros, recomendaciones' });
+    this.meta.updateTag({ name: 'keywords', content: 'sobre nosotros, política, afiliados, libros, recomendaciones' });
 
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: titleText });
